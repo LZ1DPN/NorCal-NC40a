@@ -1,0 +1,68 @@
+ NC40a using a DDS my first report
+Mike WA8BXN
+Dec 3   #14598  
+
+Now that I have done some experimentation with matched vs. not so well matched crystals in the crystal filter for the NC40a using the analog Q8 VFO I started working on using a DDS in place of the analog VFO to see how that sounds. My interest leans towards lean towards how do things perform based on what I hear rather than what may be theoretically best or measurable with fancy instrumentation. I'm not expecting performance better than my KX3 but rather something that seems to work well that I have built myself. 
+
+I am playing with a SI5351 chip as mounted on the Adafruit board. The SI5351 provides 3 independent outputs and is billed as a clock generator rather than a DDS which perhaps are supposed to use a D to A converter producing a sine wave output. The outputs from the SI5351 are intended to be square waves. It is easy to control the frequency of each with program running on an Arduino board. Connection between the Arduino and SI5351 board requires 4 wires, two for power and two for the I2C bus. 
+
+The attached file shows a sketch of the basic setup. A simple low pass filter is used to clean up the output a bit. Details are omitted on purpose at this time. Connection is made to the NC40a by cutting the connection between R23 and C7 and connecting to C7. Basically we are providing around a 2 MHz signal to the U1 receive mixer using a NE602 chip.
+
+INITIAL RESULT: When using the SI5351 in place of analog VFO Q8 received CW signals sounded good to my ears. Of course I like what I hear from an old Drake 2B as well, so your mileage may vary. Little difference (if any) was heard with and without the low pass filter in the attached sketch. I have seen that there are various debates concerning if mixers like sine or square waves for the oscillator. 
+
+I would say I have had success. Where do I go from here? Well to make things more practical in actual usage I need to work on the user interface to the Arduino. In general terms this will include frequency display and entry. I will probably try an LCD display with 2 lines of 16 charcters connected  to the I2C bus (just 4 wires total). I am leaning toward up/down buttons for frequency control rather than a rotary encoder. I will probably try both to see which feels better. 
+
+There are two more outputs from the SI5351 available. I am considering using one to replace X5 to perhaps allow passband tuning. The third output may be used to generate a 7 MHz signal to drive the transmit side of things, eliminating the need for the U4 transmit mixer. Attention will be needed on transmit output purity if that is done. 
+
+Using the Arduino and SI5351 open up a lot of other possibilities in terms of functionality and how its implemented. RIT and XIT come to mind. The T/R mode of the rig can be monitored using the 8V TX signal as an input to the Arduino (with appropriate level conversion). Sidetone could also be generated. A keyer would be easy to add. Of course there could be frequency memory and whatever band coverage may be desired. With the analog VFO I like keeping the tuning range to about 15 KHz for easy tuning. 
+
+How do costs compare using the Arduino and SI5351? I would say its very comparable to the costs of the components that can be replaced. I'm now using an Arduino Nano processor board but any Arduino board should work. If one considers the value of enhanced functionality then digital is the way to go. But cost is not the real issue for me. Can I do it all? There will be much to learn in amking it all work. This NC40a project makes a terrific platform for experimentation!
+
+73/72 - Mike WA8BXN
+
+More
+2 people liked this
+Michael Babineau
+Dec 12   #14899  
+
+Mike : 
+
+Thanks for sharing this information on your use of a DDS VFO with the NC40a.
+My plan is to do something similar, at least with my first NC40A build. 
+
+I just completed the W8TEE (et al) Modular Transceiver, from the March 2016 QST
+article. This is the 40m DC rig based on the $9 Chinese Forty-9er (available on eBay)
+married to a DDS VFO based on an AD9850 module and controlled by an Arduino Nano
+clone. I have a spare DDS VFO board (available from Farrukh Zia at http://www.farrukhzia.com/k2zia/) so my plan is to use this for my NC40A in place of the
+analog VFO. 
+
+With the Modular rig I am using the Arduino sketch developed by K4KRW
+and available in GITHUB at https://github.com/rydodd/SCRadioSoftwareK4KRW).
+The K4KRW code supports an I2C 16X2 LCD display and a rotary encoder and also incorporates an open-source Iambic keyer (Modes A & B) adapted from code written
+by K1EL. It has RIT and a few other useful features. Because of the Object-oriented
+approach that Richard took in writing this code everything is nicely organized. Also Richard has gone to great lengths to document what he has done so it should be 
+fairly easy to modify this code to support a Superhet Rig. My plan is to keep the rig
+build pretty much stock and only replace the analog VFO with the DDS VFO (i.e. I 
+will keep the hardware for the TX mixer, BFO etc). 
+
+I will add one more thing .. I happen to have a PDF copy of the the Norcal 40A Manual (REV A) and page 25 has some discussions regarding increasing the tuning range of the 
+rig beyond the approximate 60 Khz it was designed to support. If you try to push it
+beyond this range the TX output will drop because of the narrow-band filter formed by
+L6, C38 and C39 (just after the TX mixer). Given the expanded tuning range made
+available through the use of a DDS VFO, this will certainly be an issue, unless you 
+choose the option to omit the TX mixer hardware and have your VFO produce a TX output signal at the fundamental frequency (a common approach for a DDS based superset). 
+In the manual Wayne, N6KR offers two solutions to this issue. The first is to increase the range of this filter by expanding it to two identical sections isolated from each other by a 5 pF cap; the second and simpler method is to increase the value of L6 and reduce or remove C38. Wayne's suggests starting with C38 at 47pF and changing L6 to 36T of #28 on a T50-2 core (about 6.6 uH). The cost of doing this is a possible slight increase in harmonic content of the TX. My plan is already to replace the original NC40A LPF with one of the QRP Kits filters so this shouldn't be an issue for me.
+
+BTW, also worth mentioning that Wayne has some good suggestions in this manual 
+for anyone wanting to move this rig to 80m, 30m or 20m. So if anyone is planning to do
+this I suggest you have a peek at this (page 26). 
+
+The REV A manual is available at : 
+
+http://www.norcalqrp.org/files/Norcal40.pdf
+
+Cheers
+
+
+-- 
+Michael VE3WMB / VA2NB

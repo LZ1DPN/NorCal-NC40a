@@ -1,0 +1,341 @@
+    
+    NorCal40A Simplified Assembly Document by
+    Chuck Adams, K7QO   Nov 11, 2017  0100UTC (last update)
+    
+    Thanks to Wayne Burdick, N6KR, for the use of the
+    NorCal40A as a teaching exercise on qrp-tech in
+    anticipation of the 25th anniversary of the transceiver.
+    Thousands are assembled and ready to operate.  The anniversary
+    party is to get them all back on the air and making noise in
+    the ionosphere and music in the ears of operators worldwide.
+    
+    The series of assembly steps shown here are a minimal assembly
+    manual for all who wish to build the NorCal40A from
+    the qrp-tech PCB.  Experienced builders should not have
+    problems.  Others are asked to get local help,
+    if possible, in order to avoid pitfalls and possible
+    failure of the project.  Don't be afraid to seek help.
+    There is no kit of parts for this project.  Consider it
+    a scavenger hunt.
+    
+    See <http://www.k7qo.com/> for lots of information.
+    
+    ======Phase 1 -- Power and 8V Regulator=========
+    
+    Assembly steps.
+     o Standoffs.  Used to guarantee no shorts on power up.
+     o J2  -- power connection
+     o D7  -- 1N5817 Schottky diode
+     o S1  -- power switch
+     o C43 -- 47nF cap, disc or mono
+     o C42 -- 10uF electrolytic cap
+     o U5  -- 78L08 voltage regulator
+     o C54 -- 47nF cap, disc or mono
+     o C8  -- 47nF cap, disc or mono
+     o C41 -- 100uF electrolytic cap
+    
+    Testing.
+     o Power up.
+     o Measure current, if possible.  Should be about 2mA or so.
+     o U1--8 voltage measured 7.9V for my regulator.
+     o U2--8 voltage measured 7.9V for my regulator.
+     o U3--6 voltage measured 7.9V for my regulator.
+    
+    
+    ======Phase 2 -- AF AMP=======================
+    
+    Assembly steps.
+     o  J4  -- Audio jack.
+     o  C26 -- 10uF electrolytic cap
+     o  Rz  -- 10 ohms (mod to NC40A, Zobel filter)
+     o  Cz  -- 100nF   (mod to NC40A, Zobel filter)
+     o  R8  -- 500 ohm trimmer
+     o  R22 -- 1.8K 1/4W resistor
+     o  C27 -- 100uF electrolytic cap
+     o  C55 -- 10nF cap, disc or mono
+     o  U3  -- socket
+     o  C23 -- 2.2uF electrolytic cap
+     o  C22 -- 10nF cap, disc or mono
+     o  R7  -- 47K 1/4W resistor
+     o  U3  -- LM386N into socket
+    
+    Testing.
+     o  R8 -- maximum CCW rotation to minimize volume
+     o  PC Speakers at reduced volume
+     o  P/S on.
+     o  Turn volume up to see if you hear a hiss.
+     o  Insulated wire with 1mm exposed, probe R7, either end.
+        Should hear increase in noise level in speakers.
+    
+    
+    ======Phase 3 -- AGC and Mute Circuits=======================
+    
+    Assembly steps.
+     o C29 -- 10uF electrolytic cap
+     o C30 -- 2.2uF electrolytic cap
+     o D6 -- 1N5817 or 1N1711 Schottky diode
+     o D5 -- 1N5817 or 1N1711 Schottky diode
+     o R5a-c -- Four matched 2.2M 1/4W resistors
+     o D1 -- 1N4148 silicon diode
+     o D2 -- 1N4148 silicon diode
+     o D3 -- 1N4148 silicon diode
+     o D4 -- 1N4148 silicon diode
+     o C28 -- 100nF disc or mono cap
+     o C20 -- 100nF disc or mono cap
+     o C21 -- 100nF disc or mono cap
+     o C19 -- 10nF disc or mono cap
+     o Q2 -- J309 JFET or equivalent
+     o Q3 -- J309 JFET or equivalent
+     o R3 -- 150K resistor
+     o R4 -- 8.2M resistor (this may be changed later for sidetone level)
+     o R6 -- 10K variable resistor, small trimmer
+    
+    
+    Testing.
+     o Set R6 to mid position.
+     o Power up transceiver.  Touch test probe at pads U-4 and
+       U-5 of U2.  An increase in background noise should be heard in 
+       speaker or headphones.
+    
+    
+    
+    ======Phase 4 -- Product Detector and BFO=================
+    
+    Assembly steps.
+     o C17 -- 50pF or 60pF variable cap
+     o X5  -- 4.915MHz crystal
+     o U2  -- insert and solder socket into place
+     o C15 -- 2.2uF electrolytic cap
+     o C14 -- 47pF disc or mono cap
+     o C18 -- 270pF disc or mono cap
+     o U2  -- NE602A IC into socket inproper orientation
+    
+    
+    Testing.
+    o  Power up.  Touch test probe to right pad of L4 and you should hear an
+    increase in noise in the speaker or headphones.  
+    
+    o  If you have an AFA or frequency counter, see if you can
+       measure a frequency reading on pin 7 of U2.  There is an
+       empty pad to the right of C17 for this purpose.
+    
+    o  If you have a crystal oscillator, take one of the other
+       IF crystals and power up the oscillator with one of
+       the crystals in it.  With the oscillator near the NC40A,
+       you should hear a tone in the speaker or headphones.
+    
+    o  Adjustment of C17 should vary the tone heard with
+       external signal source.
+    
+    o  Measure about 1.4V or so at U6-5 and U6-2 with a DMM.
+    
+
+
+    ======Phase 5 -- IF Crystal Filter======================
+    
+    Assembly steps.
+     o L4  -- 18uH molded inductor
+     o C13 -- 270pF disc or mono cap
+     o C12 -- 270pF disc or mono cap
+     o C11 -- 270pF disc or mono cap
+     o C10 -- 270pF disc or mono cap
+     o C9  -- 270pF disc or mono cap
+     o X1  -- 4.915MHz crystal
+     o X2  -- 4.915MHz crystal
+     o X3  -- 4.915MHz crystal
+     o X4  -- 4.915MHz crystal
+    
+    
+    Testing.
+    o  Power up transceiver as before.  
+    o  Touch test probe to either pad of C9 or pad 3 of T3 and 
+       you should hear an increase in noise in
+       the speaker or headphones.  Note that the frequency range of the
+       noise is reduced from previous tests  because of the band pass 
+       frequency range of the IF filter.  The noise level will be
+       reduced in amplitude also.
+    o  Can use remaining crystal with crystal oscillator/tester to
+       generate a signal.
+    
+    
+    
+    ======Phase 6 -- Receive Mixer=============================
+    
+    Assembly steps.
+     o T3 -- FT37--61 toroid with 23T of #28 (primary); 6T of #26 (secondary).
+     o C6 -- 47pF disc or mono cap
+     o C5 -- 10nF disc or mono cap
+     o U1 -- insert and solder 8-pin socket
+     o U1 -- NE602A IC into socket with correct orientation
+     o C4 -- 5pF disc or mono cap
+    
+    No test at this time without VFO operating.
+    
+    
+    ======Phase 7 -- Receiver Band Pass Filter (BPF)=====================
+    
+    Assembly steps.
+     o T2 -- FT37-61 20T #26 (secondary); 1T #26 (primary)
+     o C2 -- 50pF variable capacitor
+     o R2 -- front panel 1K RF gain control
+     o L1 -- 15uH molded inductor
+     o C1 -- 50pF trimmer cap
+    Part of muting circuit.
+     o Q1 -- 2N4124 NPN transistor
+     o C3 -- 47nF disc or mono cap
+     o R1 -- 1.8K 1/4W resistor
+    
+    No testing done at this time.
+    
+    
+    ======Phase 8 -- VFO Section and RIT=======================
+    
+    Assembly steps.
+     o C32  -- 150pF disc or mono cap
+     o C7   -- 10nF disc or mono cap
+     o R23  -- 1.8K resistor
+     o RFC2 -- 1mH molded inductor
+     o Q8   -- J309 or equivalent JFET
+     o C52  -- 1200 poly cap
+     o C53  -- 1200 poly cap
+     o D9   -- 1N4148 silicon diode
+     o R21  -- 47K resistor
+     o C51  -- 390pF poly cap
+     o L9   -- 21uH toroid inductor, 60T of #28 on T68-7 toroid
+     o C50  -- 2-25pF air trimmer cap or omit and later friction
+               fit C0G or NP0 cap with value between 2-25pF to
+               bring VFO lower range to desired value
+     o C49  -- 47pF NPO or C0G cap
+     o D8   -- MVAM108 varactor diode or equivalent
+               this will determine tuning range
+     o R19  -- 47K  resistor
+     o R20  -- 4.7K resistor
+     o R15  -- 510 ohm resistor
+     o U6   -- socket
+     o U6   -- LM393 IC
+     o R17  -- 10K front panel tuning pot
+     o R16  -- 1K front panel RIT pot
+     o S2   -- front panel on/off RIT switch
+    
+    Testing.
+     o If you have a frequency counter, power on and measure
+       frequency at U1-6, the VFO input into the receiver mixer.
+       With RIT off, adjust VFO tune pot to lowest frequency
+       of the VFO.  Make adjustments to get this plus the IF
+       frequency to the lowest range of operation on 40m you
+       want.  Usually this will be 7.025MHz.
+    
+    
+    ======Phase 9 -- Key Switch=====================
+    
+    Assembly steps.
+     o Q4  -- 2N3906 PNP transistor
+     o R24 -- 150K resistor
+     o R9  -- 47K resistor
+     o D11 -- 1N4148 silicon diode
+     o C57 -- 47nF disc or mono cap
+     o C36 -- 47nF disc or mono cap
+     o R25 -- 100 ohm resistor
+     o C48 -- 10nF disc or mono cap
+    
+    Testing.
+     o Power up transceiver.
+     o See if receiver can hear any 40m signals with short wire
+       CAREFULLY touching pad common C44, L7 or C45.  At least
+       atmospheric noise levels.  Adjust C1 for maximum noise.
+     o Short keyline at J3 to ground.
+     o Receiver should mute.
+     o 8V voltage at U4-8 when keyline shorted to ground.
+       After short or key closure is removed, receiver should become
+       active again.  Delay may occur due to muting time constant.
+    
+    
+    ======Phase 10 -- Transmit Mixer, Bandpass Filter, and Buffer=====================
+    
+    Assembly steps.
+     o C31 -- 5pF disc or mono cap
+     o C38 -- 100pF disc or mono cap
+     o C34 -- 50pF variable trimmer cap
+     o C35 -- 270pF disc or mono cap
+     o C37 -- 5pF disc or mono cap
+     o C33 -- 47nF disc or mono cap
+     o R10 -- 510 ohm resistor
+     o L6  -- T37-2 red toroid with 28T of #28 AWG magnet wire
+     o L5  -- 18uH molded inductor
+     o X6  -- 4.915MHz crystal
+     o Q5  -- J309 or equivalent JFET transistor
+     o R11 -- 510 ohm resistor
+     o U4  -- socket
+     o U4  -- NE602 IC into socket
+     o C39 -- 50pF variable capacitor
+    
+    Testing.
+     o power up transceiver
+     o key the transmitter
+     o should hear a weak tone in the receiver
+     o adjust C34 to see if tone changes and set to desired tone
+       for monitoring while operating CW
+    
+    
+    ==========Phase 11 -- Transit Driver circuit===============
+    
+    Assembly steps.
+     o Q6  -- 2N2222A plastic transistor with ferrite bead on base
+     o R12 -- 20 ohm resistor
+     o R13 -- 500 ohm variable resistor, trimmer (set full CCW)
+     o C56 -- 10uF electrolytic cap
+     o D10 -- 1N5817 Schottky diode
+     o T1  -- FT37-43 toroid  14T \#26; 4T \#26
+     o R14 -- 100 ohms reverse of silkscreen on beta board
+    
+    Testing.
+     o power up transceiver
+     o key transmitter
+     o tone heard in receiver should increase as R13 is turned 
+       clock wise.
+    
+    ==============================================
+    WARNING.  From this point forward.  The transceiver should
+    NEVER be keyed without a 50 ohm dummy load on the ant output
+    connector or a tuned antenna for 40 meters.  The PA will be 
+    damaged due to high SWR and resulting voltages on the 
+    collector of the PA if this is not done.
+    ==============================================
+    
+    
+    
+    ===========Phase 12 -- Transmitter PA and LPF========================
+    
+    Assembly steps.
+     o  R18  -- 1K resistor
+     o  RFC1 -- 18uH molded inductor
+     o  C44  -- 47nF disc or mono cap
+     o  C45  -- 330pF disc or mono cap 
+     o  C46  -- 820pF disc or mono cap 
+     o  C47  -- 330pF disc or mono cap 
+     o  D12  -- 1N4755A 43V 1W zener diode
+     o  Q7   -- 2SC799 or equivalent, or D882 in inline pads
+     o  L7   -- T37-2 18T #26
+     o  L8   -- T37-2 18T #26
+    
+    
+    ===========================================================
+    
+    This completes assembly of the components on the PCB.
+    Work now must be done to put transceiver in an enclosure
+    of your choice with all controls, switches, power connector
+    and antenna connector (BNC).  Then transceiver must be tested
+    with dummy load and power measured and adjusted.  Several
+    dummy loads with diode detection can be used to do this.
+    
+    See qrp-tech at yahoo groups for information and help, if
+    needed.
+    
+    Everything has been done in creation of these steps above.
+    Double check all your work and follow the schematics as you
+    build and look for deviations.  Discussions will be in
+    progress on substitute parts in future discussions on qrp-tech.
+    
+    73 and good luck,
+    
+    chuck adams, k7qo
