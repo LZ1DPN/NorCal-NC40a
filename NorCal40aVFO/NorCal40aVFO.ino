@@ -44,18 +44,18 @@ char inTx = 0;     // trx in transmit mode temp var
 char keyDown = 1;   // keyer down temp vat
 
 const int FSYNC = 10;                       // Standard SPI pins for the AD9833 waveform generator.
-const int CLK = 12;                         // CLK and DATA pins are shared with the TFT display.
+const int CLK = 13;                         // CLK and DATA pins are shared with the TFT display.
 const int DATA = 11;
 const float refFreq = 25000000.0;           // On-board crystal reference frequency
 
 #define pulseHigh(pin) {digitalWrite(pin, HIGH); digitalWrite(pin, LOW); }
-Rotary r = Rotary(2,3); // sets the pins for rotary encoder uses.  Must be interrupt pins.
+Rotary r = Rotary(3,2); // sets the pins for rotary encoder uses.  Must be interrupt pins.
   
 //unsigned long xit=1200; // RIT +600 Hz
 unsigned long rx=7000000; // Starting frequency of VFO
 unsigned long rx2=1; // temp variable to hold the updated frequency
-//unsigned long rxof=800; //800
-//unsigned long freqIF=6000000;
+unsigned long rxof=800; //800
+unsigned long freqIF=4000000;
 //unsigned long rxif=(freqIF-rxof); // IF freq, will be summed with vfo freq - rx variable, my xtal filter now is made from 6 MHz xtals
 unsigned long rxRIT=0;
 int RITon=0;
@@ -92,7 +92,7 @@ delay(50);
 
   AD9833reset();                                   // Reset AD9833 module after power-up.
   delay(50);
-  AD9833setFrequency((rx-4000000), SQUARE);                  // Set the frequency and Sine Wave output
+  AD9833setFrequency((rx), SQUARE);                  // Set the frequency and Sine Wave output
   
   //  Serial.println("Start VFO ver 11.0");
 
@@ -122,7 +122,7 @@ delay(50);
   PCMSK2 |= (1 << PCINT18) | (1 << PCINT19);
   sei();
   
-    AD9833setFrequency((rx-4000000), SQUARE);     // Set AD9833 to frequency and selected wave type.
+    AD9833setFrequency((rx), SQUARE);     // Set AD9833 to frequency and selected wave type.
     delay(50);
 }
 
@@ -134,7 +134,7 @@ void loop() {
 // freq change 
   if ((rx != rx2) || (RITon == 1)){
 	    showFreq();
-      AD9833setFrequency((rx-4000000), SQUARE);     // Set AD9833 to frequency and selected wave type.
+      AD9833setFrequency((rx), SQUARE);     // Set AD9833 to frequency and selected wave type.
       rx2 = rx;
       }
 
