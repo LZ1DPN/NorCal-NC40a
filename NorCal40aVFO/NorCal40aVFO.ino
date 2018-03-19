@@ -33,7 +33,7 @@ const int SQUARE = 0x2028;                  // When we update the frequency, we 
 const int TRIANGLE = 0x2002;                // define the waveform when we end writing.    
 
 int wave = 0;
-int waveType = SINE;
+int waveType = SQUARE;
 int wavePin = 7;
 
 //#define TX_RX (4)          // mute + (+12V) relay - antenna switch relay TX/RX, and +V in TX for PA - RF Amplifier (2 sided 2 possition relay)
@@ -92,7 +92,7 @@ delay(50);
 
   AD9833reset();                                   // Reset AD9833 module after power-up.
   delay(50);
-  AD9833setFrequency((rx), SQUARE);                  // Set the frequency and Sine Wave output
+  AD9833setFrequency((rx-freqIF), SQUARE);                  // Set the frequency and Sine Wave output
   
   //  Serial.println("Start VFO ver 11.0");
 
@@ -122,7 +122,7 @@ delay(50);
   PCMSK2 |= (1 << PCINT18) | (1 << PCINT19);
   sei();
   
-    AD9833setFrequency((rx), SQUARE);     // Set AD9833 to frequency and selected wave type.
+    AD9833setFrequency((rx-freqIF), SQUARE);     // Set AD9833 to frequency and selected wave type.
     delay(50);
 }
 
@@ -133,8 +133,8 @@ void loop() {
 	
 // freq change 
   if ((rx != rx2) || (RITon == 1)){
-	    showFreq();
-      AD9833setFrequency((rx), SQUARE);     // Set AD9833 to frequency and selected wave type.
+	  showFreq();
+      AD9833setFrequency((rx-freqIF), SQUARE);     // Set AD9833 to frequency and selected wave type.
       rx2 = rx;
       }
 
